@@ -93,10 +93,7 @@ if "ultima_lectura" not in st.session_state:
 def conectar_sheets():
     try:
         if "GOOGLE_SERVICE_ACCOUNT_JSON" in st.secrets:
-            st.info(" BUSCANDO CREDENCIALES EN SECRETS DE STREAMLIT ")
-            st.info(f" GOOGLE_SERVICE_ACCOUNT_JSON: {st.secrets["GOOGLE_SERVICE_ACCOUNT_JSON"]} ")
             creds_dict = json.loads(st.secrets["GOOGLE_SERVICE_ACCOUNT_JSON"])
-            st.info(f" CREDS DICT: {creds_dict}")
             creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPE)
         else:
             if not os.path.exists(CREDS_PATH):
@@ -106,6 +103,7 @@ def conectar_sheets():
 
         st.info(" SE OBTUVIERON LAS CREDS ")
         client = gspread.authorize(creds)
+        st.info(" SE OBTUVO EL CLIENT ")
         return client.open_by_key(SHEET_ID)
     except Exception as e:
         st.error(f"⚠️ No se pudo conectar con Google Sheets: {e}")
