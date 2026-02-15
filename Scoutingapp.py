@@ -102,7 +102,9 @@ def conectar_sheets():
             creds = Credentials.from_service_account_file(CREDS_PATH, scopes=SCOPE)
 
         client = gspread.authorize(creds)
-        return client.open_by_key(SHEET_ID)
+        book = client.open_by_key(SHEET_ID)
+        st.info(f" BOOK: {book} ")
+        return book
     except Exception as e:
         st.error(f"⚠️ No se pudo conectar con Google Sheets: {e}")
         st.stop()
