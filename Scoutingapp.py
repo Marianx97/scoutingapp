@@ -102,6 +102,7 @@ def conectar_sheets():
             creds = Credentials.from_service_account_file(CREDS_PATH, scopes=SCOPE)
 
         client = gspread.authorize(creds)
+        st.info(f" CLIENT: {client} ")
         book = client.open_by_key(SHEET_ID)
         st.info(f" BOOK: {book} ")
         return book
