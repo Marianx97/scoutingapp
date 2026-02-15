@@ -102,9 +102,7 @@ def conectar_sheets():
             creds = Credentials.from_service_account_file(CREDS_PATH, scopes=SCOPE)
 
         client = gspread.authorize(creds)
-        st.info(f" CLIENT: {client} ")
         book = client.open_by_key(SHEET_ID)
-        st.info(f" BOOK: {book} ")
         return book
     except Exception as e:
         st.error(f"⚠️ No se pudo conectar con Google Sheets: {e}")
@@ -117,7 +115,6 @@ def conectar_sheets():
 def obtener_hoja(nombre_hoja: str, columnas_base: list = None):
     try:
         book = conectar_sheets()
-        st.info(" CHECKPOINT ")
         hojas = [ws.title for ws in book.worksheets()]
         if nombre_hoja not in hojas:
             ws = book.add_worksheet(title=nombre_hoja, rows=500, cols=20)
