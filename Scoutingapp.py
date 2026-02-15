@@ -102,6 +102,7 @@ def conectar_sheets():
                 st.stop()
             creds = Credentials.from_service_account_file(CREDS_PATH, scopes=SCOPE)
 
+        st.info(" SE OBTUVIERON LAS CREDS ")
         client = gspread.authorize(creds)
         return client.open_by_key(SHEET_ID)
     except Exception as e:
