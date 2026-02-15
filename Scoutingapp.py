@@ -95,6 +95,7 @@ def conectar_sheets():
         if "GOOGLE_SERVICE_ACCOUNT_JSON" in st.secrets:
             st.info(" BUSCANDO CREDENCIALES EN SECRETS DE STREAMLIT ")
             creds_dict = json.loads(st.secrets["GOOGLE_SERVICE_ACCOUNT_JSON"])
+            st.info(f" CREDS DICT: {creds_dict}")
             creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPE)
         else:
             if not os.path.exists(CREDS_PATH):
