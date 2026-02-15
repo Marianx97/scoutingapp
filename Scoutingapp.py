@@ -93,6 +93,7 @@ if "ultima_lectura" not in st.session_state:
 def conectar_sheets():
     try:
         if "GOOGLE_SERVICE_ACCOUNT_JSON" in st.secrets:
+            st.info(" BUSCANDO CREDENCIALES EN SECRETS DE STREAMLIT ")
             creds_dict = json.loads(st.secrets["GOOGLE_SERVICE_ACCOUNT_JSON"])
             creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPE)
         else:
