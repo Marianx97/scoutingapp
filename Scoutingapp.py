@@ -79,7 +79,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive"
 ]
-SHEET_ID = "1IInJ87xaaEwJfaz96mUlLLiX9_tk0HvqzoBoZGhrBi8"
+SHEET_ID = "1RY8spe0M173lmo33v5Ie4L1UvFsfE6Llq8y1W5BPnOc"
 CREDS_PATH = os.path.join("credentials", "credentials.json")
 
 # Control de lectura para evitar exceso de requests
